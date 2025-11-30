@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Button, Popover, OverlayTrigger, Tab, Nav } from "react-bootstrap";
+import  { useState, useEffect, useRef } from "react";
+import { Popover, OverlayTrigger, Tab, Nav } from "react-bootstrap";
 import Chat from "./Chat";
 import { io } from "socket.io-client";
 import "./Chat.css";
@@ -8,7 +8,7 @@ import chatIcon from "../../assets/chat.svg";
 let apiUrl =
   import.meta.env.VITE_NODE_ENV === "production"
     ? import.meta.env.VITE_API_BASE_URL
-    : "http://localhost:3000";
+    : "https://live-polling-system-frontend-eight.vercel.app";
 const socket = io(apiUrl);
 
 const ChatPopover = () => {
@@ -43,7 +43,7 @@ const ChatPopover = () => {
       setNewMessage("");
     }
   };
-  const handleKickOut = (participant, index) => {
+  const handleKickOut = (participant) => {
     socket.emit("kickOut", participant);
   };
 

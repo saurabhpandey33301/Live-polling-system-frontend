@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
+import PropTypes from "prop-types";
 import { Button, Form } from "react-bootstrap";
 import "./Chat.css";
 
@@ -81,6 +82,17 @@ const Chat = ({ messages, newMessage, onMessageChange, onSendMessage }) => {
       </Button>
     </>
   );
+};
+Chat.propTypes = {
+  messages: PropTypes.arrayOf(
+    PropTypes.shape({
+      user: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  newMessage: PropTypes.string.isRequired,
+  onMessageChange: PropTypes.func.isRequired,
+  onSendMessage: PropTypes.func.isRequired,
 };
 
 export default Chat;
